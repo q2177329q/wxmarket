@@ -70,7 +70,7 @@
 <style lang="less">
 
   .user__wrap {
-    min-height: 100vh;
+    min-height: 100vh;wget http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-8.35.tar.gz
     background-color: #f1f0f5;
   }
   .user__header-wrap {
