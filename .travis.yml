@@ -10,4 +10,4 @@ before_install:
 - ssh-add ~/.ssh/id_rsa
 - cp .travis/ssh_config ~/.ssh/config
 after_script:
-- scp -o StrictHostKeyChecking=no ../wxmarket root@39.108.164.254:~/../usr/local/project
+- scp -o StrictHostKeyChecking=no app.js root@39.108.164.254:~/../usr/local/project
