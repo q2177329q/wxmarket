@@ -1,0 +1,27 @@
+@import "./minireset.less";
+@import "../assets/font/iconfont.css";
+
+body {
+  font-family: Microsoft YaHei, 微软雅黑, MicrosoftJhengHei, 华文细黑, Helvetica, Arial, sans;
+}
+.border-t,
+.border-b {
+  position: relative;
+}
+.border-t:before,
+.border-b:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 1px;
+  background-color: #dedede;
+  transform-origin: 0 100%;
+  transform: scale(.5);
+}
+.border-t:before {
+  top: 0;
+}
+.border-b:after {
+  bottom: 0;
+}
