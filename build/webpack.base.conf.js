@@ -6,7 +6,8 @@ var vueLoaderConfig = require('./vue-loader.conf')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-
+console.log('test')
+console.log(require.resolve('../src/lib/iscroll-lite.js'))
 module.exports = {
   entry: {
     app: './src/main.js'
@@ -71,6 +72,13 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: require.resolve('../src/lib/iscroll-probe'),
+        use: [{
+            loader: 'expose-loader',
+            options: 'IScroll'
+        }]
       }
     ]
   }

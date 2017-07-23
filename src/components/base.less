@@ -16,12 +16,16 @@ body {
   width: 200%;
   height: 1px;
   background-color: #dedede;
-  transform-origin: 0 100%;
   transform: scale(.5);
 }
 .border-t:before {
   top: 0;
+  transform-origin: 0 0;
 }
 .border-b:after {
+  transform-origin: 0 100%;
   bottom: 0;
+}
+html {
+  height: 100%;
 }

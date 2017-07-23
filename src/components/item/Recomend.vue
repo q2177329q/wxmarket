@@ -6,11 +6,11 @@
         <p class="item__desc">{{desc}}</p>
         <div class="item__purchase-wrap">
           <p class="item__price">
-            <span class="item__price-small">¥</span>
+            <span class="item__price-small">￥</span>
             <span class="item__price-normal">{{price}}</span>
             <span class="item__price-small">.99</span>
           </p>
-          <a :href="url" class="item__purchase"></a>
+          <router-link :to="url" class="item__purchase"></router-link>
         </div>
       </div>
     </div> 
@@ -21,7 +21,7 @@ export default {
   name: 'item',
   data () {
     return {
-      url: '',
+      url: '/detail',
       img: 'http://shopimg.weimob.com/55707743/Goods/1609021608150544.jpg?x-oss-process=style/w360',
       desc: '【澳门香记牛肉粒1盒】澳门特产牛肉干肉脯办公室休闲零食品小吃',
       name: '',

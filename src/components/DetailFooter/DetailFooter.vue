@@ -1,14 +1,22 @@
 <template>
   <div class="detail__footer-wrap">
-    <button class="df__cart iconfont icon-cart1"></button>
-    <button class="df__mine iconfont icon-seeusero"></button>
-    <button class="df__add-cart">加入购物车</button>
-    <button class="df__buy-now">立即购买</button>
+    <router-link class="df__cart iconfont icon-cart1" tag="button" to="/user/cart"></router-link>
+    <router-link class="df__mine iconfont icon-seeusero" tag="button" to="/user"></router-link>
+    <button class="df__add-cart" @click="clickAddCart">加入购物车</button>
+    <button class="df__buy-now" @click="clickBuyNow">立即购买</button>
   </div>
 </template>
 <script>
   export default {
-    name: 'detailfooter'
+    name: 'detailfooter',
+    methods: {
+      clickAddCart () {
+        this.$emit('addCart')
+      },
+      clickBuyNow () {
+        this.$router.push('/createOrder')
+      }
+    }
   }
 </script>
 <style lang="less">

@@ -2,7 +2,7 @@
   <div class="list__wrap">
     <header class="list__header">
       <div class="list__header-control" @click="showFilter">
-        <i class="list__header-control-icon iconfont icon-list9"></i>
+        <i class="list__header-control-icon list__header-control-classify iconfont icon-list9"></i>
         <span class="list__header-control-text">分类</span>
       </div>
       <div class="list__header-search-wrap">
@@ -10,10 +10,18 @@
         <input placeholder="搜索店铺内商品" type="text" class="list__header-search">
       </div>
       <div class="list__header-control">
-        <i class="list__header-control-icon iconfont icon-list8"></i>
+        <i class="list__header-control-icon list__header-control-show-type iconfont icon-list8"></i>
         <span class="list__header-control-text">列表</span>
       </div>
     </header>
+    <div class="classify-two-wrap">
+      <div class="classify-two">
+        <ul class="classify-two__list">
+          <!-- <li class="classify-two__li classify-two__li-active">二级分类</li> -->
+          <li class="classify-two__li" v-for="index in list" :class="{'classify-two__li-active': index === classifyTwoActiveNum}" @click="clickClassifyTwo(index)">二级分类</li>
+        </ul>
+      </div>
+    </div>
     <div class="sort">
       <ul class="sort__list">
         <li class="sort__li">综合</li>
@@ -39,6 +47,7 @@
     },
     data () {
       return {
+        classifyTwoActiveNum: 1,
         list: [1, 2, 3, 4, 5, 6, 7, 8, 9],
         show: false
       }
@@ -46,13 +55,17 @@
     methods: {
       showFilter () {
         this.show = true
+      },
+      clickClassifyTwo (index) {
+        this.classifyTwoActiveNum = index
       }
     }
   }
 </script>
-<style lang="less">
-  body {
+<style lang="less" scoped>
+  .list__wrap {
     background-color: rgb(241, 241, 241);
+
   }
   .list__header {
     display: flex;
@@ -66,6 +79,12 @@
     line-height: 12px;
     color: #999;
     cursor: pointer;
+  }
+  .list__header-control-classify {
+    font-size: 23px;
+  }
+  .list__header-control-show-type {
+    font-size: 20px;
   }
   .list__header-search-wrap {
     flex: 1;
@@ -101,6 +120,46 @@
     font-size: 22px;
     line-height: 20px;
     color: #333;
+  }
+
+  .classify-two-wrap {
+    background: #fff;
+    margin-top: 1px;
+    width: 100vw;
+    overflow: hidden;
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+  .classify-two {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .classify-two__list {
+    overflow: auto;
+  }
+    ::-webkit-scrollbar {
+        width: 0px;  /* remove scrollbar space */
+        background: transparent;  /* optional: just make scrollbar invisible */
+    }
+    /* optional: show position indicator in red */
+    // ::-webkit-scrollbar-thumb {
+    //     background: transparent;
+    // }
+    ::-webkit-scrollbar { 
+        display: none; 
+    }
+  .classify-two__li {
+    display: inline-block;
+    margin: 8px 8px;
+    color: #7a797b;
+    font-size: 14px;
+    padding: 5px;
+    line-height: 20px;
+    border-radius: 15px;
+  }
+  .classify-two__li-active {
+    color: #fff;
+    background-color: #3cbaff;
   }
 
   .sort {

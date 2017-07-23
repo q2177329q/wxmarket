@@ -20,23 +20,23 @@
     </div>
     <div class="order__classify">
       <ul class="order__classify-list border-t">
-        <li class="order__classify-li">
+        <li class="order__classify-li" @click="goToOrderList">
           <i class="order__classify-icon iconfont icon-daizhifu"></i>
             待支付
         </li>
-        <li class="order__classify-li">
+        <li class="order__classify-li" @click="goToOrderList">
           <i class="order__classify-icon iconfont icon-daifahuo1"></i>
             待发货
         </li>
-        <li class="order__classify-li">
+        <li class="order__classify-li" @click="goToOrderList">
           <i class="order__classify-icon iconfont icon-daishouhuo"></i>
             待收货
         </li>
-        <li class="order__classify-li">
+        <li class="order__classify-li" @click="goToOrderList">
           <i class="order__classify-icon iconfont icon-daipingjia"></i>
             待评价
         </li>
-        <li class="order__classify-li">
+        <li class="order__classify-li" @click="goToOrderList">
           <i class="order__classify-icon iconfont icon-mweiquanguanli"></i>
             维权
         </li>
@@ -52,11 +52,11 @@
           </a>
         </li>
         <li class="operation__li">
-          <a href="" class="operation__link border-b">
+          <router-link to="/user/cart" class="operation__link border-b">
             <i class="operation__icon iconfont icon-cart1"></i>
               我的购物车
             <i class="operation__to-icon"></i>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -64,13 +64,18 @@
 </template>
 <script>
   export default {
-    name: 'user'
+    name: 'user',
+    methods: {
+      goToOrderList() {
+        this.$router.push('/order/list')
+      }
+    }
   }
 </script>
 <style lang="less">
 
   .user__wrap {
-    min-height: 100vh;wget http://downloads.sourceforge.net/project/pcre/pcre/8.35/pcre-8.35.tar.gz
+    min-height: 100vh;
     background-color: #f1f0f5;
   }
   .user__header-wrap {

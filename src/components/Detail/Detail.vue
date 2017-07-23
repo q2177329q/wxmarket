@@ -1,75 +1,92 @@
 <template>
-  <div class="detail__wrap">
-    <div class="detail__goods-pic-banner">
-      <swiper class="index-header__banner" :options="swiperOption" ref="mySwiper" >
-        <swiper-slide v-for="i in list">
-          <img :src="i" alt="" class="detail__goods-pic">
-        </swiper-slide>
-        <div class="swiper-pagination"  slot="pagination"></div>
-      </swiper>
-    </div>
-    <div class="detail">
-      <div class="detail__title-wrap">
-        <p class="detail__title">【沃隆每日坚果】河南省内包邮 每天一小包，方便又营养</p>
-        <div class="detail__collect">
-          <i class="detail__collect-icon"></i>
-          收藏
+  <div class="detail__box">
+    <!-- <swiper class="test" :options="swiperOption2" ref="mySwiper2" > -->
+      <!-- <swiper-slide> -->
+        <div class="detail__wrap">
+          <div class="detail__scroll">
+            <div class="detail__goods-pic-banner">
+              <swiper class="index-header__banner" :options="swiperOption" ref="mySwiper" >
+                <swiper-slide v-for="i in list">
+                  <img :src="i" alt="" class="detail__goods-pic">
+                </swiper-slide>
+                <div class="swiper-pagination"  slot="pagination"></div>
+              </swiper>
+            </div>
+            <div class="detail">
+              <div class="detail__title-wrap">
+                <p class="detail__title">【沃隆每日坚果】河南省内包邮 每天一小包，方便又营养</p>
+                <div class="detail__collect">
+                  <i class="detail__collect-icon"></i>
+                  收藏
+                </div>
+             </div>
+              <div class="detail__price detail__price--wx">
+                <span class="detail__price-key">微信价:</span>
+                <span class="detail__price-symbol">￥</span>
+                <span class="detail__price-int">100</span><span class="detail__price-decimals">.00</span>
+              </div>
+              <div class="detail__price detail__price--ori">
+                <span class="detail__price-key">原价:</span>
+                <span class="detail__price-symbol">￥</span>
+                <span class="detail__price-int">88</span>
+                <span class="detail__price-decimals">.00</span>
+              </div>
+              <div class="detail__delivery-wrap">
+                <div class="detail__delivery">
+                  <span class="detail__delivery-key">送至</span>
+                  <div class="detail__delevery-address">全国<i class="detail__delevery-address-icon"></i></div>
+                  <div class="detail__delevery-price">22.00元</div>
+                </div>
+                <div class="detail__salesed">销量22件</div>
+              </div>
+            </div>
+            <div class="select">
+              <p class="select__text">请选择</p>
+              <span class="select__btn"></span>
+            </div>
+            <div class="store">
+              <div class="store__msg-wrap">
+                <i class="store__icon"></i>
+                <div class="store__msg">
+                  <p class="store__name">农产品直营店</p>
+                  <p class="store__other">专注30年</p>
+                </div>
+              </div>
+              <div class="store__link">
+                <div class="store__all-goods">全部商品</div>
+                <div class="store__index">进入店铺</div>
+              </div>
+            </div>
+          </div>
         </div>
-     </div>
-      <div class="detail__price detail__price--wx">
-        <span class="detail__price-key">微信价:</span>
-        <span class="detail__price-symbol">¥</span>
-        <span class="detail__price-int">100</span><span class="detail__price-decimals">.00</span>
-      </div>
-      <div class="detail__price detail__price--ori">
-        <span class="detail__price-key">原价:</span>
-        <span class="detail__price-symbol">¥</span>
-        <span class="detail__price-int">88</span>
-        <span class="detail__price-decimals">.00</span>
-      </div>
-      <div class="detail__delivery-wrap">
-        <div class="detail__delivery">
-          <span class="detail__delivery-key">送至</span>
-          <div class="detail__delevery-address">全国<i class="detail__delevery-address-icon"></i></div>
-          <div class="detail__delevery-price">22.00元</div>
+      <!-- </swiper-slide> -->
+      <!-- <swiper-slide>
+        <div class="detail__picture-wrap">
+          <div class="detail__picture"></div>
         </div>
-        <div class="detail__salesed">销量22件</div>
-      </div>
-    </div>
-    <div class="select">
-      <p class="select__text">请选择</p>
-      <span class="select__btn"></span>
-    </div>
-    <div class="store">
-      <div class="store__msg-wrap">
-        <i class="store__icon"></i>
-        <div class="store__msg">
-          <p class="store__name">农产品直营店</p>
-          <p class="store__other">专注30年</p>
-        </div>
-      </div>
-      <div class="store__link">
-        <div class="store__all-goods">全部商品</div>
-        <div class="store__index">进入店铺</div>
-      </div>
-    </div>
-    <detail-footer></detail-footer>
+      </swiper-slide> -->
+    <!-- </swiper> -->
+    <detail-footer @addCart="clickAddCart"></detail-footer>
+    <buy-dialog></buy-dialog>
   </div>
 </template>
 <script>
+  require("expose-loader?IScroll!../../lib/iscroll-probe.js")
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
   import DetailFooter from '@/components/DetailFooter/DetailFooter.vue'
+  import BuyDialog from '@/components/BuyDialog/BuyDialog.vue'
   export default {
     name: 'detail',
     components: {
       swiper,
       swiperSlide,
-      DetailFooter
+      DetailFooter,
+      BuyDialog
     },
     data () {
       return {
-        list: ['http://shopimg.weimob.com/55707743/Goods/1607181539427936.jpg@0e_640w_640h_0c_0i_0o_90Q_1x.src',
-          'http://shopimg.weimob.com/55707743/Goods/1607181539420593.jpg@0e_640w_640h_0c_0i_0o_90Q_1x.src'
+        list: [require('./banner1.png'),
+          require('./banner2.png')
         ],
         swiperOption: {
           // loop: true,
@@ -84,16 +101,52 @@
           // scrollbar:'.swiper-scrollbar',
           mousewheelControl: true,
           observeParents: true
-        }
+        },
+        swiperOption2: {
+          direction: 'vertical',
+          height : window.innerHeight,
+          onlyExternal: true,
+          grabCursor: true,
+          autoHeight: true,
+          mousewheelControl: true,
+          observeParents: true
+        },
       }
+    },
+    methods: {
+      clickAddCart () {
+        this.eventHub.$emit('eventHub__many__addCart', {
+          img: '../../assets/goods.png',
+          price: '129.00',
+          repertoryNum: 4
+        })
+      }
+    },
+    mounted () {
+      var myScroll = new IScroll('.detail__wrap', {
+        probeType: 3
+      });
+      console.log(window.IScroll)
+      myScroll.on('scroll', (e) => {
+        // console.log(myScroll.y)
+      });
+      myScroll.on('scrollEnd', (e) => {
+        console.log(myScroll.y)
+      });
     }
   }
 </script>
 <style lang="less">
   .detail__wrap {
     // min-height: 100vh;
-    padding-bottom: 60px;
+    position: relative;
+    height: 100vh;
     background-color: #f1f1f1;
+  }
+  .detail__scroll {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding-bottom: 60px;
   }
   .detail__goods-pic {
     width: 100%;
@@ -231,6 +284,14 @@
   }
   .store__index {
     margin-left: 2%;
+  }
+  .detail__picture-wrap {
+    height: 100vh;
+    overflow: auto;
+  }
+  .detail__picture {
+    height: 1500px;
+    background-color: #ccc;
   }
 
 

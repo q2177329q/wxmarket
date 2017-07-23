@@ -7,18 +7,19 @@
       <div class="index-header__banner-wrap">
         <swiper class="index-header__banner" :options="swiperOption" ref="mySwiper" >
           <swiper-slide>
-            <a class="index-header__banner-link" href="">
-              <img class="index-header__banner-img" src="http://shopimg.weimob.com/55707743/Group/1612181540583316.jpg?x-oss-process=style/w640">
-            </a>
+            <router-link class="index-header__banner-link" to="/detail">
+              <img class="index-header__banner-img" src="./banner1.jpg">
+            </router-link>
           </swiper-slide>
           <swiper-slide>
-            <a class="index-header__banner-link" href="">
-              <img class="index-header__banner-img" src="http://shopimg.weimob.com/55707743/Group/1612181042021848.jpg?x-oss-process=style/w640">
-            </a>
+            <router-link class="index-header__banner-link" to="/detail">
+              <img class="index-header__banner-img" src="./banner2.jpg">
+            </router-link>
           </swiper-slide>
           <div class="swiper-pagination"  slot="pagination"></div>
         </swiper>
       </div>
+      <index-classify></index-classify>
     </header>
     <div class="main">
       <div class="recomend__wrap">
@@ -60,13 +61,15 @@
   import { swiper, swiperSlide } from 'vue-awesome-swiper'
   import item from '@/components/item/Recomend.vue'
   import Foot from '@/components/Foot/Foot.vue'
+  import IndexClassify from '@/components/IndexClassify/IndexClassify.vue'
   export default {
     name: 'index',
     components: {
       swiper,
       swiperSlide,
       item,
-      Foot
+      Foot,
+      IndexClassify
     },
     data () {
       return {
@@ -106,10 +109,10 @@
 </script>
 <style lang="less" scopedß>
   body {
-    padding-bottom: 53px;
     background-color: #f1f1f1;
   }
   .index__wrap {
+    padding-bottom: 53px;
     background-color: #fff;
   }
   .index-header__search-wrap {
